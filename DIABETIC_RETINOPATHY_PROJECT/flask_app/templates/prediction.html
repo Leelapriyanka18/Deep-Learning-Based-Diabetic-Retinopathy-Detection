@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DR Prediction</title>
+</head>
+<body>
+
+    <h2>Diabetic Retinopathy Prediction</h2>
+
+    <!-- Upload Form -->
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <br><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <br><hr><br>
+
+    <!-- Prediction Result -->
+    {% if prediction_result %}
+        <h3>Prediction Result:</h3>
+        <p><strong>{{ prediction_result }}</strong></p>
+
+        <h4>Uploaded Image:</h4>
+        <img src="{{ url_for('static', filename='uploads/' + image_name) }}"
+             alt="Uploaded Image"
+             width="300">
+    {% endif %}
+
+</body>
+</html>
